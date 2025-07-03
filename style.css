@@ -1,0 +1,106 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1e1e1e; /* Dark background */
+    overflow: hidden;
+}
+
+.heart {
+    position: relative;
+    width: 300px; /* Increased size */
+    height: 300px; /* Increased size */
+    background: linear-gradient(135deg, #ff3366, #ff0066); /* Gradient for more depth */
+    transform: rotate(-45deg);
+    animation: heartbeat 1s infinite; /* Heartbeat animation */
+    box-shadow: 0 0 20px rgba(255, 0, 102, 0.5), 0 0 40px rgba(255, 102, 163, 0.5); /* Glowing effect */
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 300px; /* Increased size */
+    height: 300px; /* Increased size */
+    border-radius: 50%;
+    background: inherit; /* Inherit the background */
+}
+
+.heart::before {
+    top: -150px; /* Adjusted for new size */
+    left: 0;
+}
+
+.heart::after {
+    left: 150px; /* Adjusted for new size */
+    top: 0;
+}
+
+/* Sparkle and Star Styling */
+.sparkle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%; /* Makes the sparkle circular */
+    animation: sparkleAnimation 3s infinite ease-in-out; /* Smooth sparkle animation */
+    opacity: 0; /* Start hidden */
+}
+
+/* Create multiple sparkles */
+@keyframes sparkleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1) rotate(-45deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(-45deg);
+    }
+}
+
+/* Custom sparkle creation */
+@keyframes sparkleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    25% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    75% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
